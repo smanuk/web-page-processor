@@ -37,5 +37,6 @@ public class LinkParserServiceTest {
 
         List<String> links = cut.parseLinks(document);
         assertThat(links, is(notNullValue()));
+        assertThat(links.size(), is(10));  // The document <li> shows 9 list items but we test for 10, There is an one extra link embedded in a list.
     }
 }
