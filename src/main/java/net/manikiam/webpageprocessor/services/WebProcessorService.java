@@ -2,6 +2,8 @@ package net.manikiam.webpageprocessor.services;
 
 import org.jsoup.nodes.Document;
 
+import java.util.List;
+
 /**
  * @author smanikiam
  */
@@ -15,10 +17,12 @@ public class WebProcessorService {
 
 
     private WebpageService webPageService;
+    private LinkParserService linkParserService;
 
 
     private WebProcessorService() {
         webPageService = WebpageService.getNewInstance();
+        linkParserService = LinkParserService.getNewInstance();
     }
 
 
@@ -26,7 +30,9 @@ public class WebProcessorService {
 
         Document webDocument = searchBing(searchPhrase);
 
-        System.out.println(webDocument);
+        List<String> links = linkParserService.parseLinks(webDocument);
+
+        System.out.println(links);
     }
 
 
