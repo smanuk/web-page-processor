@@ -34,7 +34,13 @@ public class WebProcessorService {
 
         for (String link : links) {
 
-            Document page = webPageService.openWebPage(link);
+            try {
+                Document page = webPageService.openWebPage(link);
+            }
+            catch (Exception ex) {
+                System.out.println("Error opening webpage, will skip this one: " + link);
+            }
+
         }
     }
 
