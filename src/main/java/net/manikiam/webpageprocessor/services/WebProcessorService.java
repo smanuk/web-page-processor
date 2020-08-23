@@ -1,5 +1,6 @@
 package net.manikiam.webpageprocessor.services;
 
+import net.manikiam.webpageprocessor.model.ScriptResult;
 import org.jsoup.nodes.Document;
 
 import java.util.List;
