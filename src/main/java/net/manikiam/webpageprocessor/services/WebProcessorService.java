@@ -3,6 +3,7 @@ package net.manikiam.webpageprocessor.services;
 import org.jsoup.nodes.Document;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author smanikiam
@@ -53,6 +54,11 @@ public class WebProcessorService {
     private Document searchBing(String searchPhrase) throws Exception {
 
         return webPageService.openWebPage(new StringBuilder(BING_SEARCH_URL).append(searchPhrase).toString());
+    }
+
+    private void addScripts(List<String> scriptNames, Map<String, ScriptResult> results) {
+
+        scriptNames.forEach(sn -> addScript(sn, results));
     }
 
     private void addScript(String scriptName, Map<String, ScriptResult> results) {
