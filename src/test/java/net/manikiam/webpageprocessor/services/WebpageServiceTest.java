@@ -21,9 +21,14 @@ public class WebpageServiceTest {
     }
 
     @Test
-    public void firstTest() throws Exception {
+    public void openWebPageTest() throws Exception {
 
         Document dc = cut.openWebPage("https://www.bing.com/search?q='absolute zero'");
         assertThat(dc, not(nullValue()));
+    }
+
+    @Test(expected = Exception.class)
+    public void openWebPageFailTest() throws Exception {
+        Document dc = cut.openWebPage("https://www.test.nothng.com");
     }
 }
