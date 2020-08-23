@@ -41,5 +41,13 @@ public class ScriptParserServiceTest {
         List<String> result = cut.parseScripts(document);
         assertThat(result.size(), is(2));
     }
+
+    @Test
+    public void parseScriptsContainsTest() {
+
+        List<String> result = cut.parseScripts(document);
+
+        assertThat(result, hasItem(SCRIPT1));
+        assertThat(result, hasItem(SCRIPT2));
     }
 }
