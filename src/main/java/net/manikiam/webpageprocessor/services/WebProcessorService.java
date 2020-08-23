@@ -13,6 +13,8 @@ public class WebProcessorService {
 
     private static String BING_SEARCH_URL = "https://www.bing.com/search?q=";
 
+    private static int LIMIT = 5;
+
     public static WebProcessorService getNewInstance() {
         return new WebProcessorService();
     }
@@ -70,5 +72,17 @@ public class WebProcessorService {
         else {
             results.put(scriptName, new ScriptResult(scriptName));
         }
+    }
+
+    private void sortAndPrintResults(Map<String, ScriptResult> results) {
+
+        System.out.println("Total entries: " + results.size());
+
+        System.out.println("Top 5 entries:");
+        results.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .limit(LIMIT)
+                .forEach(m -> System.out.println(m.getValue()));
     }
 }
