@@ -18,11 +18,13 @@ public class WebProcessorService {
 
     private WebpageService webPageService;
     private LinkParserService linkParserService;
+    private ScriptParserService scriptParserService;
 
 
     private WebProcessorService() {
         webPageService = WebpageService.getNewInstance();
         linkParserService = LinkParserService.getNewInstance();
+        scriptParserService = ScriptParserService.getNewInstance();
     }
 
 
@@ -36,6 +38,9 @@ public class WebProcessorService {
 
             try {
                 Document page = webPageService.openWebPage(link);
+                List<String> scriptNames = scriptParserService.parseScripts(page);
+
+                System.out.println(scriptNames);
             }
             catch (Exception ex) {
                 System.out.println("Error opening webpage, will skip this one: " + link);
