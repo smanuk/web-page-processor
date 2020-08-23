@@ -32,7 +32,10 @@ public class WebProcessorService {
 
         List<String> links = linkParserService.parseLinks(webDocument);
 
-        System.out.println(links);
+        for (String link : links) {
+
+            Document page = webPageService.openWebPage(link);
+        }
     }
 
 
