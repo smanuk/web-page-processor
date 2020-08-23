@@ -8,6 +8,10 @@ import org.junit.Test;
 import java.io.File;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.is;
+
 /**
  * @author smanikiam
  */
@@ -35,5 +39,7 @@ public class ScriptParserServiceTest {
     public void parseScriptsCountTest() {
 
         List<String> result = cut.parseScripts(document);
+        assertThat(result.size(), is(2));
+    }
     }
 }
