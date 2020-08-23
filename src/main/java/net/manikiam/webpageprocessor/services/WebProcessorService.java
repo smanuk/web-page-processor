@@ -55,4 +55,13 @@ public class WebProcessorService {
         return webPageService.openWebPage(new StringBuilder(BING_SEARCH_URL).append(searchPhrase).toString());
     }
 
+    private void addScript(String scriptName, Map<String, ScriptResult> results) {
+
+        if (results.containsKey(scriptName)) {
+            results.get(scriptName).incrementCount();
+        }
+        else {
+            results.put(scriptName, new ScriptResult(scriptName));
+        }
+    }
 }
