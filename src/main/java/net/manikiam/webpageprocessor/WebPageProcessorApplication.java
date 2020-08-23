@@ -16,6 +16,10 @@ public class WebPageProcessorApplication {
             WebPageProcessorApplication webPageProcessorApplication = new WebPageProcessorApplication();
             webPageProcessorApplication.webProcessorService.countScripts(args[0]);
         }
+        else {
+            System.out.println("Please supply a search phrase as an argument to this application.");
+            throw new IllegalArgumentException("No search argument supplied");
+        }
     }
 
 
