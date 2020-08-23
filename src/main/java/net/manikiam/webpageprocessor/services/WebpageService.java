@@ -16,4 +16,10 @@ public class WebpageService {
     private WebpageService() {
 
     }
+
+    public Document openWebPage(String webUrlString) throws Exception {
+
+            return Jsoup.connect(webUrlString)
+                    .get();
+    }
 }
