@@ -3,6 +3,7 @@ package net.manikiam.webpageprocessor.services;
 import net.manikiam.webpageprocessor.model.ScriptResult;
 import org.jsoup.nodes.Document;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,19 +39,19 @@ public class WebProcessorService {
 
         List<String> links = linkParserService.parseLinks(webDocument);
 
+        Map<String, ScriptResult> results = new HashMap<>();
         for (String link : links) {
 
             try {
                 Document page = webPageService.openWebPage(link);
-                List<String> scriptNames = scriptParserService.parseScripts(page);
-
-                System.out.println(scriptNames);
+                addScripts(scriptParserService.parseScripts(page), results);
             }
             catch (Exception ex) {
                 System.out.println("Error opening webpage, will skip this one: " + link);
             }
-
         }
+
+        sortAndPrintResults(results);
     }
 
 
