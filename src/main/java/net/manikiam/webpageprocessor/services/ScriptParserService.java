@@ -10,6 +10,10 @@ import java.util.List;
  */
 public class ScriptParserService {
 
+    private static final String SOURCE = "src";
+    private static String SCRIPT_REF = "script[src]";
+    private static final String JS = ".js";
+
     public static ScriptParserService getNewInstance() {
         return new ScriptParserService();
     }
